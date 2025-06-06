@@ -13,7 +13,6 @@ const billSchema = new mongoose.Schema(
     shippingTocompanyName: { type: String, required: true },
     shippingTogstin: { type: String, required: true },
     shippingToAddress: { type: String, required: true },
-    shippingToState: { type: String, required: true },
     packageCount: { type: String, required: true },
     perKgPrice: { type: String, required: true },
     weight: { type: String, required: true },
