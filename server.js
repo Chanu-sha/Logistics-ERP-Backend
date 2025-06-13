@@ -3,18 +3,23 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 
-import billRoutes from "./routes/billRoutes.js";
+import docketRoutes from "./routes/docketRoutes.js";
+import invoiceRoutes from "./routes/invoiceRoutes.js";
 
 dotenv.config();
 
 const app = express();
 
-app.use(cors({
-  origin: process.env.CORSS_ORIGIN_URL || "http://localhost:5173",
-  credentials: true
-}));app.use(express.json());
+app.use(
+  cors({
+    origin: process.env.CORSS_ORIGIN_URL || "http://localhost:5173",
+    credentials: true,
+  })
+);
+app.use(express.json());
 
-app.use("/api/bills", billRoutes);
+app.use("/api/dockets", docketRoutes);
+app.use("/api/invoices", invoiceRoutes);
 
 app.get("/", (req, res) => {
   res.send("Billing Backend is up and running.");
