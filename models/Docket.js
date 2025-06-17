@@ -1,12 +1,10 @@
 import mongoose from "mongoose";
 
 const docketSchema = new mongoose.Schema({
-  companyName: String,
-  gstin: String,
-  address: String,
   invoiceDate: String,
   invoiceNumber: String,
   grnNumber: String,
+  grDate: String,
   from: String,
   to: String,
   packageCount: String,
