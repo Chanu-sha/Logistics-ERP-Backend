@@ -5,6 +5,7 @@ import cors from "cors";
 
 import docketRoutes from "./routes/docketRoutes.js";
 import invoiceRoutes from "./routes/invoiceRoutes.js";
+import statementRoutes from "./routes/statementRoutes.js";
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 
 app.use("/api/dockets", docketRoutes);
 app.use("/api/invoices", invoiceRoutes);
+app.use('/api/statements', statementRoutes); 
 
 app.get("/", (req, res) => {
   res.send("Billing Backend is up and running.");

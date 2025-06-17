@@ -1,5 +1,26 @@
 import Docket from "../models/Docket.js";
 
+export const generateGRNNumber = async (req, res) => {
+  try {
+    const latestDocket = await Docket.findOne({})
+      .sort({ createdAt: -1 })
+      .select("grnNumber");
+
+    let newGRN;
+
+    if (!latestDocket || !latestDocket.grnNumber) {
+      newGRN = "1804";
+    } else {
+      newGRN = (parseInt(latestDocket.grnNumber, 10) + 1).toString();
+    }
+
+    res.status(200).json({ grnNumber: newGRN });
+  } catch (err) {
+    console.error("Error generating GRN Number:", err);
+    res.status(500).json({ error: "Failed to generate GRN Number" });
+  }
+};
+
 export const createDocket = async (req, res) => {
   try {
     const docket = new Docket(req.body);
@@ -7,7 +28,9 @@ export const createDocket = async (req, res) => {
     res.status(201).json(saved);
   } catch (err) {
     console.error("Error saving docket:", err);
-    res.status(500).json({ error: "Failed to save docket", details: err.message });
+    res
+      .status(500)
+      .json({ error: "Failed to save docket", details: err.message });
   }
 };
 

@@ -5,10 +5,12 @@ import {
   getDocketById,
   updateDocket,
   deleteDocket,
+  generateGRNNumber,
 } from "../controllers/docketController.js";
 
 const router = express.Router();
 
+router.get("/generate/grn-number", generateGRNNumber);
 router.post("/", createDocket);
 router.get("/", getAllDockets);
 router.get("/:id", getDocketById);
