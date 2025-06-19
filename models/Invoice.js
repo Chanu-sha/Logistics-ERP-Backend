@@ -3,13 +3,11 @@ import mongoose from "mongoose";
 const invoiceSchema = new mongoose.Schema(
   {
     companyName: String,
-    gstin: String,
     address: String,
     invoiceDate: String,
     invoiceNumber: String,
     grnNumber: String,
     shippingTocompanyName: String,
-    shippingTogstin: String,
     shippingToAddress: String,
     packageCount: String,
     weight: String,
